@@ -1,14 +1,6 @@
 // *********************************************************************************
 // File offers a set of easier-to-use methods for interacting with the MySQL db.
 // *********************************************************************************
-/*
-* In the `orm.js` file, create the methods that will execute the necessary MySQL commands in the controllers. These are the methods you will need to use in order to retrieve and store data in your database.
-
-     * `selectAll()`
-     * `insertOne()`
-     * `updateOne()`
-*/
-
 
 // Dependencies
 // =============================================================
@@ -41,14 +33,38 @@ function objToSql(obj) {
 }
 
 var orm = {
-	selectAll: function() {
-		
+	selectAll: function(tableInput, cb) {
+		let queryString = "SELECT * FROM " + tableName + ";";
+
+    // Load the SQL
+    connection.query(queryString, function(err, result) {
+      if (err) throw err;
+      // return the resulting data
+      cb(result);
+    });
+
 	},
-	insertOne: function() {
-		
+	insertOne: function(table, cols, vals, cb) {
+		let queryString = "INSERT INTO " + table + " (" + cols + ") VALUES ('"+ vals +"');";
+
+    // Load the SQL
+    connection.query(queryString, function(err, result) {
+      if (err) throw err;
+      cb(result);
+    });
+
 	},
-	updateOne: function() {
+	updateOne: function(table, objColVals, condition, cb) {
+    // Using objToSql above turns objColVals into a string; condition is already a string of "key=value"
+    let queryString = "UPDATE " + table + " SET " + objToSql(objColVals) + " WHERE " + condition + ";" ;
+
+    // Load the SQL
+    connection.query(queryString, [objColVals, condition], function(err, result) {
+      if (err) throw err;
+      cb(result);
+    });
 	}
 }
 
+// Export the orm object for the model (burger.js).
 module.exports = orm;
