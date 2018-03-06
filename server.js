@@ -1,12 +1,14 @@
 // Dependencies
 // =============================================================
 var express = require('express');
-var exphbs = require('express-handlebars');;
+var exphbs = require('express-handlebars');
+var bodyParser = require("body-parser");
+
 
 // Sets up the Express App
 // =============================================================
 var app = express();
-var PORT = 3000;
+var PORT = process.env.PORT || 8080;
 
 // Set Handlebars as the default templating engine.
 app.engine("handlebars", exphbs({ 
@@ -15,23 +17,14 @@ app.engine("handlebars", exphbs({
 );
 app.set("view engine", "handlebars");
 
-var mysql = require("mysql");
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-var connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "fafruhUbes0a",
-  database: "snippet"
-});
+// Serve static content for the app from the "public" directory in the application directory.
+app.use(express.static("public"));
 
-connection.connect(function(err) {
-  if (err) {
-    console.error("error connecting: " + err.stack);
-    return;
-  }
-
-  console.log("connected as id " + connection.threadId);
-});
+// Import routes and give the server access to them.
+require("./controllers/burgerController.js")(app);
 
 app.listen(PORT, function() {
     console.log("I\'m listening... on port " + PORT);
