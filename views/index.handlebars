@@ -7,13 +7,14 @@
 	
 	<div class="row">
 		<div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 text-center">
+			<p class="alert alert-danger input-error">Please enter a burger</p>
 			<!-- Input field to type your burger -->
 			<div class="form-group">
 				<label for="burgerName"><h2>Create A New Burger Masterpiece</h2></label>
 				<input type="text" class="form-control" id="burgerName" placeholder="Burger Name">
 			</div>
 			<!-- Submit button -->
-			<button type="submit" class="btn btn-primary" id="btnSubmit">Create The Burger Of The Day</button>
+			<button type="submit" class="btn btn-primary" id="btnSubmit">Build Burger</button>
 		</div>
 	</div>
 
@@ -41,7 +42,6 @@
 				<div class="row">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="served-mid">
 						<ul>
-							<p>Daily Menu</p>
 							{{#each burgers}}
 								{{#if devoured}}
 									<p class="served-items">{{burger_name}}</p>
