@@ -1,0 +1,55 @@
+<!-- *********************************************************************************
+	 	Template that Handlebars can render onto.
+	 *********************************************************************************
+ -->
+
+<div class="container">
+	
+	<div class="row">
+		<div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 text-center">
+			<!-- Input field to type your burger -->
+			<div class="form-group">
+				<label for="burgerName"><h2>Create A New Burger Masterpiece</h2></label>
+				<input type="text" class="form-control" id="burgerName" placeholder="Burger Name">
+			</div>
+			<!-- Submit button -->
+			<button type="submit" class="btn btn-primary" id="btnSubmit">Create The Burger Of The Day</button>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+			<div class="container">
+				<div class="row">
+					<!-- List available burgers here -->
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="menu-mid">
+						<ul>
+							{{#each burgers}}
+								{{#unless devoured}}
+									<p class="menu-items">{{burger_name}}</p>
+									<button class="btn btn-warning devour" data-id="{{id}}">Move To The Menu</button>
+								{{/unless}}
+							{{/each}}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="served-mid">
+						<ul>
+							<p>Daily Menu</p>
+							{{#each burgers}}
+								{{#if devoured}}
+									<p class="served-items">{{burger_name}}</p>
+								{{/if}}
+							{{/each}}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
