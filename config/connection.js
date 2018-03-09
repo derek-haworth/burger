@@ -1,5 +1,5 @@
 // *********************************************************************************
-//  INITIATES THE CONNECTION TO MYSQL
+// This initiates the connection of Node to MySQL then exports the connection
 // *********************************************************************************
 
 // Require mysql
