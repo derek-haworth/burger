@@ -9,7 +9,7 @@ This full stack `Node` app uses a basic `MySQL` database, `Express` for the serv
 
 You will also need to setup a MySQL database on your local and update `config/connection.js` to include your localhost information. Then use the following code in `db/schema.sql` to set up your database and `db/seeds.sql` to add in some starting data. 
 
-If you don't want to do all that then you can visit the [Live Demo]()
+If you don't want to do all that then you can visit the [Live Demo](https://haworth-burger-app.herokuapp.com/)
 
 
 ### Notes
