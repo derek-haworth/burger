@@ -23,13 +23,14 @@
 			<div class="row">
 				<!-- List available burgers here -->
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="menu-mid">
+					<h3 class="text-center">Burgers to Eat</h3>
 					<ul>
 						{{#each burgers}}
 							{{#unless devoured}}
-							<li>
-								<p class="menu-items">{{burger_name}}</p>
-								<button class="btn btn-warning devour" data-id="{{id}}">Move To The Menu</button>
-							</li>
+								<div class="menu-item">
+									<p class="burger"><span class="burger-id">{{id}}</span>{{burger_name}}</p>
+									<button class="btn btn-warning devour" data-id="{{id}}">Eat it!</button>
+								</div>
 							{{/unless}}
 						{{/each}}
 					</ul>
@@ -40,10 +41,11 @@
 		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="served-mid">
+					<h3 class="text-center">Devoured Burgers</h3>
 					<ul>
 						{{#each burgers}}
 							{{#if devoured}}
-								<p class="served-items">{{burger_name}}</p>
+								<p class="served-items"><span class="burger-id">{{id}}</span>{{burger_name}}</p>
 							{{/if}}
 						{{/each}}
 					</ul>

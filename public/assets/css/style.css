@@ -1,3 +1,20 @@
 .burger-input-block{
 	margin: 0 0 30px 0;
 }
+.menu-item {
+	margin: 15px 0;
+}
+.burger {
+	float: left;
+	width: 65%;
+}
+.burger > button {
+	width: 30%;
+}
+span.burger-id {
+	margin:  0 10px 0 0;
+}
+footer {
+	margin: 30px 0 0 0;
+	padding: 40px;
+}
